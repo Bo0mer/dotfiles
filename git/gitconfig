@@ -1,0 +1,22 @@
+[http]
+	sslVerify = true
+[push]
+	default = matching
+[alias]
+	s = status
+	c = commit -m
+	co = checkout
+	br = branch
+	last = log -1 HEAD
+	fu = fetch upstream
+	mu = merge upstream/master
+	magic = reset --soft upstream/master
+	dci = duet-commit
+	drv = duet-revert
+	dmg = duet-merge
+	drb = rebase -i --exec 'git duet-commit --amend --reset-author'
+
+    # Clone a repo including all submodules
+    c = clone --recursive
+    cb = !"f() { git clone -b $2 --recursive $1 $2; }; f"
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
