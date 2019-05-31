@@ -11,15 +11,15 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-nmap <leader>gg :!ginkgo<CR>
-nmap <leader>gr :!ginkgo -r<CR>
+nmap <leader>gg :!ginkgo --randomizeAllSpecs <CR>
+nmap <leader>gr :!ginkgo -r -p --randomizeAllSpecs --race<CR>
 
 set relativenumber
 
 :ab :W :write
 :ab ife if err != nil {<CR>
 :ab ifer if err != nil {<CR>return err}
-:ab td // TODO(ivan):
+:ab td // TODO(borshukov):
 
 :syntax off
 
@@ -29,3 +29,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 map <leader>en :lnext<CR>
+
+
+let g:neocomplete#auto_complete_delay = 750
+set tw=79
